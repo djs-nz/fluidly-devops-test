@@ -15,6 +15,6 @@ Please answer the following questions in a mardown file called Answers.md
 
 1. How long did you spend on the coding test? Why that length of time?
 2. Describe why you made the choices that you did. What would you do differently? 
-3. What did you enjoy most about this excercise?
+3. What did you enjoy most about this exercise?
 4. What is the most useful bit of tech you have used recently?
 
