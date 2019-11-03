@@ -17,9 +17,10 @@ monitoring with terraform if I was doing it
 
 ## Prerequisites:
 
-1. gcloud SDK installed locally
+1. Google Cloud SDK installed locally
+https://cloud.google.com/sdk/install
 
-2. Cloud Build & Cloud Run APIs enabled on project
+2. Cloud Build & Cloud Run APIs enabled on the GCP project
 
 3. Cloud Build service account has the 'Cloud Run Admin' and 'Service
 Account User' roles granted
@@ -30,28 +31,33 @@ The app can be deployed to the current GCP project with: `./manual-deploy.sh`
 
 This will display the URL of the deployed Cloud Run service.
 
+The app is currently deployed in my GCP project at:
+https://fluidly-test-4pz724bcoa-ew.a.run.app/
 
-## Summary
+For CI I set up a cloud build trigger to automatically build and
+deploy when changes are made to master on GitHub. This uses the
+following trigger:
 
-I decided to use Docker in a serverless environment because
-it's a simple and easy to manage solution for a simple stateless app
-such as this. I chose Google Cloud Run because I'm familiar with GCP
-and looked easy to use and good provides scalability. Google Cloud
-Build joins the two together and can be integrated with GitHub to
-provide continous delivery.
+![Alt test](cb-trigger.png?raw=true "Cloud Build Trigger")
+
+## Details
+
+I decided to use Docker in a serverless environment because it's a
+simple and easy to manage solution for a basic stateless app such as
+this. I chose Google Cloud Run because I'm familiar with GCP and
+looked easy to use with good scalability, HTTPS, metrics, logging,
+etc. Google Cloud Build joins the two together and can be integrated
+with GitHub to provide continous delivery.
 
 I had to change the app to use a PORT environment variable so that it
 could fit in with the Cloud Run requirements.
 
-I looked looked into setting up a Cloud Build Github trigger with
+I looked looked into setting up the Cloud Build Github trigger with
 terraform (using this resource
 https://www.terraform.io/docs/providers/google/r/cloudbuild_trigger.html)
 but it would be tied to a specific GCP project and it doesn't appear
 possible to create the Github linked source repository in GCP with
 this provider.
-
-The app is deployed in my GCP project at:
-https://fluidly-test-4pz724bcoa-ew.a.run.app/
 
 ## Technical Answers
 
