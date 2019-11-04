@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-const PORT = parseInt(process.env.PORT);
+const PORT = parseInt(process.env.PORT || 3000);
 
 app.get('/', function (req, res) {
   if (Math.random() * 5 > 4) {
